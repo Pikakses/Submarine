@@ -22,14 +22,13 @@ public class Movement : MonoBehaviour
     void Update()
     {
         ProcessThrust();
-        ProcessRotation();
         ProcessSideThrust();
     }
 
 
     void ProcessThrust()
     {
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             rb.AddRelativeForce(Vector3.right * mainThrust * Time.deltaTime);
             
@@ -51,7 +50,7 @@ public class Movement : MonoBehaviour
 
     void ProcessSideThrust()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             rb.AddRelativeForce(Vector3.up * sideThrust * Time.deltaTime);
             if(!audioSource.isPlaying)
@@ -59,7 +58,7 @@ public class Movement : MonoBehaviour
                 audioSource.Play();
             }
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             rb.AddRelativeForce(Vector3.down * sideThrust * Time.deltaTime);
             if(!audioSource.isPlaying)
