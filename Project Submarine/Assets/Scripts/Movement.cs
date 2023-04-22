@@ -26,7 +26,7 @@ public class Movement : MonoBehaviour
         ProcessThrust();
         ProcessSideThrust();
     }
-
+    
 
     void ProcessThrust()
     {
