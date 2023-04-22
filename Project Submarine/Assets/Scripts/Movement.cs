@@ -37,6 +37,42 @@ public class Movement : MonoBehaviour
 
     }
 
+
+    void ProcessSideThrust()
+    {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            StartSideThrust(sideThrust);
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            StartSideThrust(-sideThrust);
+        }
+        else
+        {
+            StopSideThrust();
+        }
+
+    }
+
+    void StopSideThrust()
+    {
+        audioSource.Stop();
+        rotorParticles.Stop();
+    }
+
+    void StartSideThrust(float sideThrust)
+    {
+        rb.AddRelativeForce(Vector3.up * sideThrust * Time.deltaTime);
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(rotorSFX);
+        }
+        if (!rotorParticles.isPlaying)
+        {
+            rotorParticles.Play();
+        }
+    }
     void ProcessRotation()
     {
         if (Input.GetKey(KeyCode.Q))
@@ -47,41 +83,6 @@ public class Movement : MonoBehaviour
         {
             ApllyRotation(-rotationThrust);
         }
-    }
-
-    void ProcessSideThrust()
-    {
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            rb.AddRelativeForce(Vector3.up * sideThrust * Time.deltaTime);
-            if(!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(rotorSFX);
-            }
-            if(!rotorParticles.isPlaying)
-            {
-                rotorParticles.Play();
-            }
-        }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            rb.AddRelativeForce(Vector3.down * sideThrust * Time.deltaTime);
-            if(!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(rotorSFX);
-            }
-            if(!rotorParticles.isPlaying)
-            {
-                rotorParticles.Play();
-            }
-            
-        }
-        else
-        {
-            audioSource.Stop();
-            rotorParticles.Stop();
-        }
-        
     }
 
     void ApllyRotation(float rotationThisFrame)
