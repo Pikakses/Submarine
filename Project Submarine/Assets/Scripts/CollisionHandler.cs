@@ -33,11 +33,10 @@ public class CollisionHandler : MonoBehaviour
             case "Friendly":
                 print("Friendly");
                 break;
+            case "Fuel":
+                break;
             case "Finish":
                 StartSuccessSequence();
-                break;
-            case "Fuel":
-                print("Fuel");
                 break;
             default:
                 StartCrashSequence();
@@ -45,6 +44,7 @@ public class CollisionHandler : MonoBehaviour
         }
 
     }
+
     void StartCrashSequence()
     {
         isTransitioning = true;

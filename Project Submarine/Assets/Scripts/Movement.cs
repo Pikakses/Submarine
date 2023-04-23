@@ -43,14 +43,17 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             StartSideThrust(sideThrust);
+            FuelSystem.isMoving = true;
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             StartSideThrust(-sideThrust);
+            FuelSystem.isMoving = true;
         }
         else
         {
             StopSideThrust();
+            FuelSystem.isMoving = false;
         }
 
     }
