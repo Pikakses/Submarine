@@ -8,7 +8,7 @@ public class AddFuel : MonoBehaviour
     {
         if(collision.transform.parent.gameObject.name.Equals("Submarine"))
         {
-            FuelSystem.currentFuel += 20f;
+            FuelSystem.AddFuel(20);
             Destroy(gameObject);
         }
     }

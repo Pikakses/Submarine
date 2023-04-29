@@ -85,12 +85,13 @@ public class CollisionHandler : MonoBehaviour
         {
             nextSceneIndex = 0;
         }
-
+        FuelSystem.ResetFuel();
         SceneManager.LoadScene(nextSceneIndex);
     }
     void ReloadLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        FuelSystem.ResetFuel();
         SceneManager.LoadScene(currentSceneIndex);
     }
 }

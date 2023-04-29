@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class FuelSystem : MonoBehaviour
 {
-    [HideInInspector] public static float currentFuel = 100f;
     [HideInInspector] public static bool isMoving;
     [SerializeField] float baseInterval = 0.35f;
     [SerializeField] Text fuelMeter;
     float countDown;
+    static float currentFuel = 100f;
 
 
     // Start is called before the first frame update
@@ -22,6 +22,16 @@ public class FuelSystem : MonoBehaviour
     void Update()
     {
         ProcessFuel();
+    }
+
+    public static void AddFuel(float amount)
+    {
+        currentFuel += amount;
+    }
+
+    public static void ResetFuel()
+    {
+        currentFuel = 100f;
     }
 
     void ProcessFuel()
