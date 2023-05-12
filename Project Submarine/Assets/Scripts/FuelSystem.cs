@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FuelSystem : MonoBehaviour
 {
     [HideInInspector] public static bool isMoving;
-    [SerializeField] float baseInterval = 0.35f;
+    [SerializeField] float baseInterval = 0.25f;
     [SerializeField] Text fuelMeter;
     float countDown;
     static float currentFuel = 100f;
@@ -34,10 +34,17 @@ public class FuelSystem : MonoBehaviour
         currentFuel = 100f;
     }
 
+    public static bool CheckIfHasFuel()
+    {
+        if(currentFuel <= 0) { return false; }
+        else                 { return true; }
+    }
+
     void ProcessFuel()
     {       
         if(!isMoving) { return; }
         if(currentFuel > 100f) { currentFuel = 100f; }
+        if(currentFuel < 0)    { currentFuel = 0f; }
         if(countDown > 0)
         {
             countDown -= Time.deltaTime;

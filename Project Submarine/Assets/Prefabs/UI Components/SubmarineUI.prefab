@@ -109,9 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c972137aad1444dbc831fd44641e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentFuel: 100
-  isMoving: 0
-  baseInterval: 1
+  baseInterval: 0.25
   fuelMeter: {fileID: 1104163931149336203}
 --- !u!1 &1104163931985192017
 GameObject:

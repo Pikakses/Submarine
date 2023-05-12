@@ -22,6 +22,7 @@ public class CollisionHandler : MonoBehaviour
     void Update()
     {
         ProcessDebugKeys();
+        CheckFuel();
     }
 
     void OnCollisionEnter(Collision other)
@@ -74,6 +75,13 @@ public class CollisionHandler : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.C))
         {
             collisionDisabled = !collisionDisabled;
+        }
+    }
+    void CheckFuel()
+    {
+        if(!FuelSystem.CheckIfHasFuel())
+        {
+            StartCrashSequence();
         }
     }
     void LoadNextLevel()
